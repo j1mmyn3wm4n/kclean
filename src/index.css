@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #ffcc12;
+  --color-brand-dark: #e6b300;
+  --color-ink: #0d131a;
+  --color-ink-soft: #1a212b;
+  --color-muted: #56585e;
+  --color-mist: #eceff3;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-ink font-sans antialiased;
+}
+
+/* soap bubbles drifting up the hero */
+.bubble {
+  position: absolute;
+  bottom: -40px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 32% 30%,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.08) 60%,
+    rgba(255, 204, 18, 0.12)
+  );
+  box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.35);
+  animation: bubble-rise linear infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(14px);
+  }
+  95% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-108vh) translateX(-10px);
+    opacity: 0;
+  }
+}
+
+/* glossy sweep across primary CTAs */
+.shine::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 60%
+  );
+  transform: translateX(-130%);
+}
+
+.shine:hover::before {
+  transform: translateX(130%);
+  transition: transform 0.7s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble,
+  .animate-bounce {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
