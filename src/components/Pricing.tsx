@@ -34,7 +34,12 @@ export function Pricing() {
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.09 }}
                   className={i % 2 ? 'bg-mist/60' : 'bg-white'}
                 >
-                  <td className="px-6 py-5 font-semibold">{row.service}</td>
+                  <td className="px-6 py-5 font-semibold">
+                    {row.service}
+                    <span className="mt-1 block text-sm font-normal text-muted sm:hidden">
+                      {row.notes}
+                    </span>
+                  </td>
                   <td className="whitespace-nowrap px-6 py-5 font-bold text-brand-dark">
                     {row.price}
                   </td>

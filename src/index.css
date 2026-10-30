@@ -14,6 +14,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* slide-in reveals start translated off-canvas; never let them widen the page */
+html,
+body {
+  overflow-x: clip;
+}
+
 body {
   @apply bg-white text-ink font-sans antialiased;
 }
